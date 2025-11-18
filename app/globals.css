@@ -8,8 +8,21 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono: var(--font-geist-mono);
+
+  --color-redaiu-blue-700: #1b4584;
+  --color-redaiu-blue-500: #3071b7;
+  --color-redaiu-blue-300: #4eace9;
+  --color-redaiu-blue-200: #83ccf1;
+  --color-redaiu-blue-100: #c2e4f8;
+
+  --color-redaiu-gray-800: #3c3c3b;
+  --color-redaiu-gray-600: #575756;
+  --color-redaiu-gray-500: #6f6f6e;
+  --color-redaiu-gray-200: #ababab;
+  --color-redaiu-gray-100: #dbdbdb;
 }
 
 @media (prefers-color-scheme: dark) {
