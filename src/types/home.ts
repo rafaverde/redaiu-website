@@ -5,6 +5,7 @@ export interface CompanySummary {
   slug: string;
   empresasFg: {
     logo: WPImage;
+    logoNegativo: WPImage;
   };
 }
 

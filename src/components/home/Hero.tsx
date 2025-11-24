@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { LoaderCircle } from "lucide-react";
+import { shuffleArray } from "@/src/lib/utils";
 
 interface HeroProps {
   title?: string;
@@ -29,14 +30,7 @@ export default function Hero({ title, subtitle, images }: HeroProps) {
       setIsFading(true);
 
       setTimeout(() => {
-        setShuffledImages((prev) => {
-          const newArr = [...prev];
-          for (let i = newArr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-          }
-          return newArr;
-        });
+        setShuffledImages((prev) => shuffleArray(prev));
         setIsFading(false);
       }, 700);
     }, 4000);
