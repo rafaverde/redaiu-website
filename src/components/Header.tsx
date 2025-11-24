@@ -36,7 +36,7 @@ export default function Header() {
   });
 
   return (
-    <header className=" w-full sticky top-0">
+    <header className=" w-full sticky top-0 z-50">
       <div className="w-full bg-redaiu-blue-700 shadow-sm shadow-redaiu-gray-800">
         <div className="container m-auto p-5 md:px-0 flex justify-between items-center gap-8 md:gap-2">
           <Link href="/">

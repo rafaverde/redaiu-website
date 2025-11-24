@@ -4,6 +4,7 @@ import { WPImage } from "@/src/types";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { LoaderCircle } from "lucide-react";
 
 interface HeroProps {
   title?: string;
@@ -45,7 +46,9 @@ export default function Hero({ title, subtitle, images }: HeroProps) {
 
   if (shuffledImages.length === 0) {
     return (
-      <div className="relative w-full h-[600px] md:h-[700px] bg-redaiu-800" />
+      <div className="h-[700px] w-full grid items-center justify-center bg-redaiu-gray-100 animate-pulse">
+        <LoaderCircle className="size-7 text-redaiu-gray-600 animate-spin" />
+      </div>
     );
   }
 
