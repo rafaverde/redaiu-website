@@ -10,10 +10,10 @@ export default function WhyRedAiu({ title, body, areas }: WhyRedAiuProps) {
 
   return (
     <section className="bg-white">
-      <div className="container mx-auto px-4 md:px-0 py-15">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
+      <div className="container mx-auto px-4 py-15 md:px-0">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-20">
           <div className="space-y-4">
-            <h2 className="text-4xl text-redaiu-blue-700 font-light">
+            <h2 className="text-redaiu-blue-700 text-4xl font-light">
               {title}
             </h2>
             <p className="text-redaiu-gray-800">{body}</p>
@@ -25,7 +25,7 @@ export default function WhyRedAiu({ title, body, areas }: WhyRedAiuProps) {
                 key={index + area}
                 className="text-redaiu-gray-800 flex items-center gap-2"
               >
-                <div className="h-3 w-3 bg-redaiu-blue-300"></div>
+                <div className="bg-redaiu-blue-300 h-3 w-3"></div>
                 {area}
               </li>
             ))}

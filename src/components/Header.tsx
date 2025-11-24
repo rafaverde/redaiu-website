@@ -36,15 +36,15 @@ export default function Header() {
   });
 
   return (
-    <header className=" w-full sticky top-0 z-50">
-      <div className="w-full bg-redaiu-blue-700 shadow-sm shadow-redaiu-gray-800">
-        <div className="container m-auto p-5 md:px-0 flex justify-between items-center gap-8 md:gap-2">
+    <header className="sticky top-0 z-50 w-full">
+      <div className="bg-redaiu-blue-700 shadow-redaiu-gray-800 w-full shadow-sm">
+        <div className="container m-auto flex items-center justify-between gap-8 p-5 md:gap-2 md:px-0">
           <Link href="/">
             <Logo isCompact={isScrolled} />
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-8 ">
+          <nav className="hidden items-center gap-8 md:flex">
             {NAV_ITEMS.map((item, index) => {
               const isActive = pathname === item.href;
               return (
@@ -71,19 +71,19 @@ export default function Header() {
                   aria-label="Abir menu"
                   className="bg-redaiu-blue-700"
                 >
-                  <Menu className="text-redaiu-blue-100 w-8 h-8" />
+                  <Menu className="text-redaiu-blue-100 h-8 w-8" />
                 </Button>
               </SheetTrigger>
 
               <SheetContent
                 side="top"
-                className="w-full h-full bg-redaiu-blue-700/90"
+                className="bg-redaiu-blue-700/90 h-full w-full"
               >
                 <SheetTitle className="sr-only">Menu</SheetTitle>
                 <SheetDescription className="sr-only">
                   Menu de Navegación Mobile
                 </SheetDescription>
-                <nav className="flex flex-col items-center justify-center h-full gap-8 mt-8">
+                <nav className="mt-8 flex h-full flex-col items-center justify-center gap-8">
                   {NAV_ITEMS.map((item, index) => {
                     const isActive = pathname === item.href;
                     return (
@@ -94,7 +94,7 @@ export default function Header() {
                         className={`text-2xl font-medium transition-colors ${
                           isActive
                             ? "text-redaiu-blue-300 font-bold"
-                            : "text-white hover:text-redaiu-blue-300"
+                            : "hover:text-redaiu-blue-300 text-white"
                         }`}
                       >
                         {item.label}
