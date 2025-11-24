@@ -71,7 +71,7 @@ export const GET_HOME_DATA = gql`
   }
 `;
 
-export async function GetHomeData() {
+export async function getHomeData() {
   const client = getClient();
 
   try {
@@ -80,8 +80,20 @@ export async function GetHomeData() {
       fetchPolicy: "no-cache",
     });
 
+    const homeData = data?.page?.homeFg;
+    const heroImages = homeData
+      ? [
+          homeData.heroImage1,
+          homeData.heroImage2,
+          homeData.heroImage3,
+          homeData.heroImage4,
+          homeData.heroImage5,
+          homeData.heroImage6,
+        ].filter((img) => img && img.node)
+      : [];
+
     return {
-      pageData: data?.page?.homeFg,
+      pageData: { ...homeData, heroImagesArray: heroImages },
       companies: data?.empresas.nodes || [],
     };
   } catch (err) {
