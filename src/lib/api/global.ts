@@ -18,7 +18,12 @@ const GET_GLOBAL_DATA = gql`
                 url
                 logotipo {
                   node {
+                    altText
                     sourceUrl
+                    mediaDetails {
+                      width
+                      height
+                    }
                   }
                 }
               }

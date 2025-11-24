@@ -4,7 +4,7 @@ export interface Apoiador {
   title: string;
   apoiadoresFg: {
     url: string;
-    logo: WPImage;
+    logotipo: WPImage;
   };
 }
 

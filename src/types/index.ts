@@ -1,7 +1,7 @@
 // Tipo genérico para imagens que vêm do WP
 export interface WPImage {
   node: {
-    sourceURL: string;
+    sourceUrl: string;
     altText: string;
     mediaDetails?: {
       width?: number;
