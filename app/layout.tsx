@@ -31,7 +31,7 @@ export default async function RootLayout({
       <body className={`${montserrat.className} antialiased`}>
         <Header companies={companies} />
         <main>{children}</main>
-        <Footer />
+        <Footer companies={companies} />
       </body>
     </html>
   );
