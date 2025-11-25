@@ -10,9 +10,9 @@ export interface Apoiador {
 
 export interface Diferencial {
   title: string;
-  diferenciaisFG: {
+  diferenciaisFg: {
     description: string;
-    iconName: string;
+    iconName: string[] | string;
   };
 }
 

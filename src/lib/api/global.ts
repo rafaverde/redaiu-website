@@ -34,7 +34,7 @@ const GET_GLOBAL_DATA = gql`
         whyUruguayCards {
           nodes {
             ... on Diferencial {
-              id
+              title
               diferenciaisFg {
                 description
                 iconName

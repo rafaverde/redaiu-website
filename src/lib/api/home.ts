@@ -65,6 +65,16 @@ export const GET_HOME_DATA = gql`
               }
             }
           }
+          logoNegativo {
+            node {
+              sourceUrl
+              altText
+              mediaDetails {
+                width
+                height
+              }
+            }
+          }
         }
       }
     }
