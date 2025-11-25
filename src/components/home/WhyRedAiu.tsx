@@ -13,7 +13,7 @@ export default function WhyRedAiu({ title, body, areas }: WhyRedAiuProps) {
       <div className="container mx-auto px-4 py-15 md:px-0">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-20">
           <div className="space-y-4">
-            <h2 className="text-redaiu-blue-700 text-4xl font-light">
+            <h2 className="text-redaiu-blue-700 text-3xl leading-tight font-light md:text-5xl">
               {title}
             </h2>
             <p className="text-redaiu-gray-800">{body}</p>

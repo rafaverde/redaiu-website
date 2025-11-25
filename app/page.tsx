@@ -1,6 +1,8 @@
 import CompanyGrid from "@/src/components/home/CompanyGrid";
 import Hero from "@/src/components/home/Hero";
 import WhyRedAiu from "@/src/components/home/WhyRedAiu";
+import WhyUruguay from "@/src/components/home/WhyUruguay";
+import { getGlobalData } from "@/src/lib/api/global";
 import { getHomeData } from "@/src/lib/api/home";
 import { shuffleArray } from "@/src/lib/utils";
 import { LoaderCircle } from "lucide-react";
@@ -8,12 +10,15 @@ import { LoaderCircle } from "lucide-react";
 export const revalidateTime = 60;
 
 export default async function Home() {
-  const homeData = await getHomeData();
+  const [homeData, globalData] = await Promise.all([
+    getHomeData(),
+    getGlobalData(),
+  ]);
 
-  if (!homeData) {
+  if (!homeData || !globalData) {
     return (
-      <div className="h-[700px] w-full grid items-center justify-center">
-        <LoaderCircle className="size-7 text-redaiu-gray-600 animate-spin" />
+      <div className="grid h-[700px] w-full items-center justify-center">
+        <LoaderCircle className="text-redaiu-gray-600 size-7 animate-spin" />
       </div>
     );
   }
@@ -38,6 +43,11 @@ export default async function Home() {
       <CompanyGrid
         companies={shuffledCompanies}
         title={pageData.companyGridTitle}
+      />
+
+      <WhyUruguay
+        title={globalData.whyUruguayTitle}
+        cards={globalData.whyUruguayCards?.nodes || []}
       />
     </>
   );
