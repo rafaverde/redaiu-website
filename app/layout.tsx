@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/src/components/Header";
 import Footer from "@/src/components/Footer";
+import { getMenuCompanies } from "@/src/lib/api/menu";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -17,15 +18,18 @@ export const metadata: Metadata = {
     "Empresas de arquitectura e ingeniería de Uruguay para ofrecer soluciones más completas, innovadoras y sostenibles en todo el mundo.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const companies = await getMenuCompanies();
+  console.log(companies);
+
   return (
     <html lang="es">
       <body className={`${montserrat.className} antialiased`}>
-        <Header />
+        <Header companies={companies} />
         <main>{children}</main>
         <Footer />
       </body>

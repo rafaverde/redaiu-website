@@ -14,15 +14,32 @@ import {
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { NAV_ITEMS } from "@/src/lib/constants";
+import { CompanyMenuItem } from "../types/menu";
 
-export default function Header() {
+interface HeaderProps {
+  companies: CompanyMenuItem[];
+}
+
+export default function Header({ companies }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isCompaniesMobileMenuOpen, setIsCompaniesMobileMenuOpen] =
+    useState(false);
   const pathname = usePathname();
 
-  // Fecha menu mobile ao mudar de rota
+  // Filtra empresas por categorias
+  const architectureCategory = companies.filter((co) => {
+    co.categoriasEmpresa?.nodes?.some((cat) => cat.name === "Arquitectura");
+  });
+
+  const engineeringCategory = companies.filter((co) => {
+    co.categoriasEmpresa?.nodes?.some((cat) => cat.name === "Ingeniería");
+  });
+
+  // Fecha menu mobile e reseta dropdown submenu ao mudar de rota
   useEffect(() => {
     setIsOpen(false);
+    setIsCompaniesMobileMenuOpen(false);
   }, [pathname]);
 
   // Controla o Scroll para comportamento do Header
