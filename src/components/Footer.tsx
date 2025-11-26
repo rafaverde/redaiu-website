@@ -72,7 +72,7 @@ export default async function Footer({ companies }: FooterProps) {
                         >
                           <li>
                             <Link
-                              className="hover:text-redaiu-blue-300 flex transition-colors duration-500"
+                              className="hover:text-redaiu-blue-300 flex py-2 transition-colors duration-500 md:py-1"
                               key={index + company.title}
                               href={`/empresas/${company.slug}`}
                             >
