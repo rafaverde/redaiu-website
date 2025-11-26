@@ -1,12 +1,27 @@
 import Link from "next/link";
 import { NAV_ITEMS } from "../lib/constants";
 import Logo from "./layout/Logo";
-import { CircleSmall, Mail, PhoneCall } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  CircleSmall,
+  Mail,
+  PhoneCall,
+} from "lucide-react";
 import { getGlobalData } from "../lib/api/global";
 import Image from "next/image";
+import { CompanyMenuItem } from "../types/menu";
+import { groupCompaniesByCategory } from "../lib/utils";
 
-export default async function Footer() {
+interface FooterProps {
+  companies: CompanyMenuItem[];
+}
+
+export default async function Footer({ companies }: FooterProps) {
   const globalData = await getGlobalData();
+
+  const groupedCompanies = groupCompaniesByCategory(companies);
+  const categories = Object.keys(groupedCompanies);
 
   if (!globalData) {
     return null;
@@ -24,23 +39,67 @@ export default async function Footer() {
               Uruguaya de Servicios de Arquitectura e Ingeniería (CUSAI).
             </p>
           </div>
+
           <div className="space-y-4">
             <h3 className="text-xs uppercase">Navegar</h3>
             <nav className="flex flex-col items-start gap-2">
-              {NAV_ITEMS.map((item, index) => {
-                return (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className={`hover:text-redaiu-blue-300 flex gap-1 transition-colors duration-500`}
+              <Link
+                href="/la-red"
+                className={`hover:text-redaiu-blue-300 flex items-center justify-center gap-1 transition-colors duration-500`}
+              >
+                <CircleSmall className="text-redaiu-blue-300" />
+                La Red
+              </Link>
+
+              <div className="hover:text-redaiu-blue-300 flex cursor-pointer items-center justify-center gap-1 transition-colors duration-500 select-none">
+                <CircleSmall className="text-redaiu-blue-300" />
+                Empresas
+              </div>
+
+              {categories.map((category, index) => (
+                <ul className="space-y-4">
+                  <li
+                    key={index + category}
+                    className="group group space-y-1 text-sm"
                   >
-                    <CircleSmall className="text-redaiu-blue-300" />
-                    {item.label}
-                  </Link>
-                );
-              })}
+                    <div className="flex cursor-pointer items-center justify-center gap-1 pl-6 tracking-widest uppercase select-none">
+                      <CircleSmall className="text-redaiu-blue-300 size-5" />
+                      {category}
+                      <ChevronRight className="size-4 transition-transform duration-500 ease-in-out group-hover:rotate-90" />
+                    </div>
+                    <div className="grid grid-rows-[0fr] transition-all duration-500 ease-in-out group-hover:grid-rows-[1fr]">
+                      {groupedCompanies[category].map((company, index) => (
+                        <ul
+                          key={index + company.title}
+                          className="overflow-hidden pl-12"
+                        >
+                          <li>
+                            <Link
+                              className="hover:text-redaiu-blue-300 flex transition-colors duration-500"
+                              key={index + company.title}
+                              href={`/empresas/${company.slug}`}
+                            >
+                              <CircleSmall className="text-redaiu-blue-300 size-5" />
+                              {company.title}
+                            </Link>
+                          </li>
+                        </ul>
+                      ))}
+                    </div>
+                  </li>
+                </ul>
+              ))}
+
+              <Link
+                href="/contacto"
+                className={`hover:text-redaiu-blue-300 flex items-center justify-center gap-1 transition-colors duration-500`}
+              >
+                <CircleSmall className="text-redaiu-blue-300" />
+                Contacto
+              </Link>
             </nav>
           </div>
+
           <div className="space-y-4">
             <h3 className="text-xs uppercase">Contacto</h3>
             <div className="space-y-3">
