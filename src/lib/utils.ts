@@ -61,3 +61,10 @@ export function groupCompaniesByCategory(
 
   return sortedGroups;
 }
+
+/**
+ * Converte textarea que chega do WP com itens por linha
+ * em um array de tópicos.
+ */
+export const toList = (text: string) =>
+  text ? text.split("\n").filter((line) => line.trim()) : [];
