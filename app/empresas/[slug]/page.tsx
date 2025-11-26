@@ -1,8 +1,8 @@
-// Importações temporárias
-import featuredImage from "@/public/ingenium-header-image.webp";
-import companyLogo from "@/public/logo-ingenium-positivo.svg";
-import tempBuilding1 from "@/public/projects/project-ponte-igualada.webp";
-import tempBuilding2 from "@/public/projects/project-ecipsa.webp";
+// // Importações temporárias
+// import featuredImage from "@/public/ingenium-header-image.webp";
+// import companyLogo from "@/public/logo-ingenium-positivo.svg";
+// import tempBuilding1 from "@/public/projects/project-ponte-igualada.webp";
+// import tempBuilding2 from "@/public/projects/project-ecipsa.webp";
 
 import Image from "next/image";
 import { Button } from "@/src/components/ui/button";
@@ -11,26 +11,55 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { LuLink } from "react-icons/lu";
 import Link from "next/link";
-import { Mail, PhoneCall } from "lucide-react";
+import { ChevronRight, Mail, PhoneCall } from "lucide-react";
+import { getAllCompaniesSlug, getCompanyBySlug } from "@/src/lib/api/companies";
+import { notFound } from "next/navigation";
+import { toList } from "@/src/lib/utils";
 
-export default function CompanyPage() {
+export async function generateStaticParams() {
+  const companies = await getAllCompaniesSlug();
+  return companies?.map((company) => ({ slug: company.slug }));
+}
+
+export const revalidate = 60;
+
+export default async function CompanyPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const company = await getCompanyBySlug(slug);
+
+  if (!company) {
+    return notFound();
+  }
+
+  const { title, content, featuredImage, empresasFg } = company;
+
   return (
     <>
       <section className="text-redaiu-gray-600 bg-white">
         <div className="container mx-auto grid grid-cols-1 gap-8 px-4 py-15 md:px-1 lg:grid-cols-2">
           <div className="mb-8 flex flex-col gap-4 md:mb-0">
             <div className="py-4">
-              <h2 className="sr-only">Company name</h2>
-              <Image src={companyLogo} alt="" width={300} />
+              <h2 className="sr-only">{title}</h2>
+              <Image
+                src={empresasFg?.logo?.node?.sourceUrl}
+                alt={empresasFg?.logo?.node?.altText}
+                width={300}
+                height={0}
+              />
             </div>
 
             <div className="border-redaiu-blue-300 flex items-center justify-between border-y py-4">
-              <Link href={`/teste`}>
+              <Link href={empresasFg?.websiteUrl}>
                 <div className="hover:text-redaiu-blue-300 flex items-center gap-2">
-                  <LuLink size={28} /> www.ingenium.com.uy
+                  <LuLink size={28} /> {empresasFg?.websiteUrl}
                 </div>
               </Link>
-              <Link href={`https://www.linkedin.com`} target="_blank">
+              <Link href={empresasFg?.linkedinUrl} target="_blank">
                 <FaLinkedin
                   size={50}
                   className="text-redaiu-gray-800 hover:text-redaiu-blue-300"
@@ -43,26 +72,28 @@ export default function CompanyPage() {
                 Sobre Nosotros
               </h3>
 
-              <p>
-                Ingenium, desde el 2011, es una consultora en ingeniería
-                estructural especializada en el diseño de soluciones ajustadas a
-                las singularidades de cada proyecto. Con un fuerte compromiso
-                con la sostenibilidad, acciona a través de diseños orientados a
-                la optimización de recursos. Diseña estructuras en distintos
-                países de Iberoamérica, y sus clientes la eligen por sus valores
-                y calidad técnica. Cada proyecto es único; la solución adecuada
-                surge de la exploración conjunta con la contraparte, mediante
-                una comunicación ﬂuida que permita un entendimiento profundo del
-                proyecto y de los intereses de todos los actores involucrados.
-              </p>
+              <div dangerouslySetInnerHTML={{ __html: content }}></div>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center gap-10">
-            <Image src={featuredImage} alt="" />
+            <Image
+              src={featuredImage?.node?.sourceUrl}
+              alt={featuredImage?.node?.altText}
+              width={featuredImage?.node?.mediaDetails?.width}
+              height={featuredImage?.node?.mediaDetails?.height}
+            />
             <div>
-              <Button size="lg" className="bg-redaiu-blue-300">
-                Contactar <FaWhatsapp />{" "}
-              </Button>
+              <Link
+                href={`https://wa.me/${empresasFg.whatsappPhone}`}
+                target="_blank"
+              >
+                <Button
+                  size="lg"
+                  className="bg-redaiu-blue-300 hover:bg-redaiu-blue-700 cursor-pointer"
+                >
+                  Contactar <FaWhatsapp />{" "}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -74,31 +105,37 @@ export default function CompanyPage() {
             <h2 className="text-xl font-bold uppercase md:text-2xl">
               Areas de expertise
             </h2>
-            <p className="leading-relaxed">
-              • Ediﬁcación en altura <br />• Arquitectura comercial e
-              institucional <br />• Infraestructura y obra civil <br />•
-              Estructuras prefabricadas
-            </p>
+            <ul className="leading-relaxed">
+              {toList(empresasFg.areasExpertise).map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <ChevronRight className="size-4" /> {item}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="bg-redaiu-gray-600 space-y-4 px-8 py-15">
             <h2 className="text-xl font-bold uppercase md:text-2xl">
               Servicios
             </h2>
-            <p className="leading-relaxed">
-              • Ediﬁcación en altura <br />• Arquitectura comercial e
-              institucional <br />• Infraestructura y obra civil <br />•
-              Estructuras prefabricadas
-            </p>
+            <ul className="leading-relaxed">
+              {toList(empresasFg.services).map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <ChevronRight className="size-4" /> {item}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="bg-redaiu-gray-500 space-y-4 px-8 py-15">
             <h2 className="text-xl font-bold uppercase md:text-2xl">
               Mercados en los que ha trabajado
             </h2>
-            <p className="leading-relaxed">
-              • Ediﬁcación en altura <br />• Arquitectura comercial e
-              institucional <br />• Infraestructura y obra civil <br />•
-              Estructuras prefabricadas
-            </p>
+            <ul className="leading-relaxed">
+              {toList(empresasFg.markets).map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <ChevronRight className="size-4" /> {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -111,51 +148,41 @@ export default function CompanyPage() {
             </h2>
           </div>
 
-          <article className="border-redaiu-blue-300 grid grid-cols-1 gap-12 border-b py-9 lg:grid-cols-2">
-            <div className="flex justify-end">
-              <Image src={tempBuilding1} alt="" className="rounded-4xl" />
-            </div>
-            <div className="flex flex-col justify-center gap-9">
-              <div>
-                <h3 className="text-xl font-bold uppercase md:text-2xl">
-                  Cambuur
-                </h3>
-                <p>23.000 m2 | 2023 | Países Bajos</p>
+          {empresasFg.proyectosRelacionados.nodes.map((project, index) => (
+            <article
+              key={index + project.title}
+              className="border-redaiu-blue-300 grid grid-cols-1 gap-12 border-b py-9 lg:grid-cols-2"
+            >
+              <div className="flex justify-end">
+                <Image
+                  src={project?.featuredImage?.node?.sourceUrl}
+                  alt={project?.featuredImage?.node?.altText}
+                  width={project?.featuredImage?.node?.mediaDetails?.width}
+                  height={project?.featuredImage?.node?.mediaDetails?.height}
+                  className="rounded-4xl"
+                />
               </div>
-              <p>
-                "Estadio de futbol del club SC Cambuur con capacidad para 15000
-                personas. Estructura de hormigón prefabricado con gradas, vigas
-                y pilares de hormigón prefabricado , losas alveolares." Proyecto
-                ejecutivo de estructura prefabricada de hormigón y acero
-              </p>
-              <p>
-                <strong>Cliente: </strong> Stadium Ontwikkeling Cambuur
-              </p>
-            </div>
-          </article>
-
-          <article className="grid grid-cols-1 gap-12 py-9 lg:grid-cols-2">
-            <div className="flex justify-end">
-              <Image src={tempBuilding2} alt="" className="rounded-4xl" />
-            </div>
-            <div className="flex flex-col justify-center gap-9">
-              <div>
-                <h3 className="text-xl font-bold uppercase md:text-2xl">
-                  Cambuur
-                </h3>
-                <p>23.000 m2 | 2023 | Países Bajos</p>
+              <div className="flex flex-col justify-center gap-9">
+                <div>
+                  <h3 className="text-xl font-bold uppercase md:text-2xl">
+                    {project.title}
+                  </h3>
+                  <p>
+                    {project?.proyectosFg?.squareMeters}m<sup>2</sup> |{" "}
+                    {project?.proyectosFg?.year} |{" "}
+                    {project?.proyectosFg?.country} |{" "}
+                    {project?.proyectosFg?.scope}
+                  </p>
+                </div>
+                <div
+                  dangerouslySetInnerHTML={{ __html: project.content }}
+                ></div>
+                <p>
+                  <strong>Cliente: </strong> Stadium Ontwikkeling Cambuur
+                </p>
               </div>
-              <p>
-                "Estadio de futbol del club SC Cambuur con capacidad para 15000
-                personas. Estructura de hormigón prefabricado con gradas, vigas
-                y pilares de hormigón prefabricado , losas alveolares." Proyecto
-                ejecutivo de estructura prefabricada de hormigón y acero
-              </p>
-              <p>
-                <strong>Cliente: </strong> Stadium Ontwikkeling Cambuur
-              </p>
-            </div>
-          </article>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -165,36 +192,56 @@ export default function CompanyPage() {
             <h2 className="text-2xl md:text-4xl">Contacto</h2>
           </div>
           <div className="border-redaiu-blue-300 flex flex-col justify-center border-b p-6 md:border-r md:border-b-0">
-            <div className="flex gap-4">
-              <Link href={`linkedIn Contato`} target="_blank">
+            <div>
+              <Link
+                href={empresasFg?.contactLinkedin}
+                target="_blank"
+                className="hover:text-redaiu-blue-300 flex gap-4"
+              >
                 <FaLinkedin size={36} />
-              </Link>
 
-              <div>
-                <p className="font-bold italic">Ing. Facundo del Castillo</p>
-                <p className="italic">Socio Fundador</p>
-              </div>
+                <div>
+                  <p className="font-bold italic">{empresasFg?.contactName}</p>
+                  <p className="italic">{empresasFg?.contactTitle}</p>
+                </div>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col gap-3 p-6">
-            <Link href={`mailto:`} className="flex items-center gap-3">
+            <Link
+              href={`mailto:${empresasFg.contactEmail}`}
+              target="_blank"
+              className="hover:text-redaiu-blue-300 flex items-center gap-3"
+            >
               <Mail size={24} />
-              email@email.com.uy
+              {empresasFg.contactEmail}
             </Link>
 
-            <Link href={`mailto:`} className="flex items-center gap-3">
+            <Link
+              href={`tel:${empresasFg.contactPhone}`}
+              target="_blank"
+              className="hover:text-redaiu-blue-300 flex items-center gap-3"
+            >
               <PhoneCall size={24} />
-              +598 29167897
+              {empresasFg.contactPhone}
             </Link>
 
-            <Link href={`mailto:`} className="flex items-center gap-3">
+            <Link
+              href={`https://wa.me/${empresasFg.whatsappPhone}`}
+              target="_blank"
+              className="hover:text-redaiu-blue-300 flex items-center gap-3"
+            >
               <FaWhatsapp size={24} />
-              +598 29167897
+              {empresasFg.whatsappPhone}
             </Link>
 
-            <Link href={`mailto:`} className="flex items-center gap-3">
+            <Link
+              href={empresasFg.linkedinUrl}
+              target="_blank"
+              className="hover:text-redaiu-blue-300 flex items-center gap-3"
+            >
               <FaLinkedin size={24} />
-              ingenium
+              {company.title}
             </Link>
           </div>
         </div>

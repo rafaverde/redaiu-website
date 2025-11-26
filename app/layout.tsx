@@ -24,7 +24,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const companies = await getMenuCompanies();
-  console.log(companies);
 
   return (
     <html lang="es" className="scroll-smooth" data-scroll-behavior="smooth">
