@@ -1,9 +1,3 @@
-// // Importações temporárias
-// import featuredImage from "@/public/ingenium-header-image.webp";
-// import companyLogo from "@/public/logo-ingenium-positivo.svg";
-// import tempBuilding1 from "@/public/projects/project-ponte-igualada.webp";
-// import tempBuilding2 from "@/public/projects/project-ecipsa.webp";
-
 import Image from "next/image";
 import { Button } from "@/src/components/ui/button";
 import { FaWhatsapp } from "react-icons/fa";
@@ -14,7 +8,7 @@ import Link from "next/link";
 import { ChevronRight, Mail, PhoneCall } from "lucide-react";
 import { getAllCompaniesSlug, getCompanyBySlug } from "@/src/lib/api/companies";
 import { notFound } from "next/navigation";
-import { toList } from "@/src/lib/utils";
+import { formatNumber, toList } from "@/src/lib/utils";
 
 export async function generateStaticParams() {
   const companies = await getAllCompaniesSlug();
@@ -167,18 +161,33 @@ export default async function CompanyPage({
                   <h3 className="text-xl font-bold uppercase md:text-2xl">
                     {project.title}
                   </h3>
-                  <p>
-                    {project?.proyectosFg?.squareMeters}m<sup>2</sup> |{" "}
-                    {project?.proyectosFg?.year} |{" "}
-                    {project?.proyectosFg?.country} |{" "}
-                    {project?.proyectosFg?.scope}
-                  </p>
+                  <div>
+                    {project.proyectosFg.squareMeters && (
+                      <span className="border-redaiu-gray-800 border-r px-2 first:pl-0 last:border-0">
+                        {formatNumber(project.proyectosFg.squareMeters)}m
+                        <sup>2</sup>
+                      </span>
+                    )}
+                    {project.proyectosFg.year && (
+                      <span className="border-redaiu-gray-800 border-r px-2 first:pl-0 last:border-0">
+                        {project.proyectosFg.year}
+                      </span>
+                    )}
+                    {project.proyectosFg.country && (
+                      <span className="border-redaiu-gray-800 border-r px-2 first:pl-0 last:border-0">
+                        {project.proyectosFg.country}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div
                   dangerouslySetInnerHTML={{ __html: project.content }}
                 ></div>
                 <p>
-                  <strong>Cliente: </strong> Stadium Ontwikkeling Cambuur
+                  <strong>Cliente: </strong> {project?.proyectosFg?.client}
+                </p>
+                <p>
+                  <strong>Alcance: </strong> {project?.proyectosFg?.scope}
                 </p>
               </div>
             </article>
