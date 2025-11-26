@@ -98,7 +98,7 @@ export default function Header({ companies }: HeaderProps) {
                   </NavigationMenuTrigger>
 
                   <NavigationMenuContent>
-                    <div className="flex gap-8 p-6 outline-0">
+                    <div className="flex gap-8 p-6">
                       {categories.map((category, index) => (
                         <div
                           key={index + category}
@@ -191,7 +191,7 @@ export default function Header({ companies }: HeaderProps) {
                       onClick={() =>
                         setIsCompaniesMobileMenuOpen(!isCompaniesMobileMenuOpen)
                       }
-                      className="hover:text-redaiu-blue-300 flex items-center gap-2 text-2xl font-medium transition-colors"
+                      className="hover:text-redaiu-blue-300 flex items-center gap-2 border-none text-2xl font-medium transition-colors outline-none"
                     >
                       Empresas
                       <ChevronDown
