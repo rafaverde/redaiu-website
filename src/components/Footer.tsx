@@ -57,17 +57,14 @@ export default async function Footer({ companies }: FooterProps) {
               </div>
 
               {categories.map((category, index) => (
-                <ul className="space-y-4">
-                  <li
-                    key={index + category}
-                    className="group group space-y-1 text-sm"
-                  >
+                <ul key={index + category} className="space-y-4">
+                  <li className="group group space-y-1 text-sm">
                     <div className="flex cursor-pointer items-center justify-center gap-1 pl-6 tracking-widest uppercase select-none">
                       <CircleSmall className="text-redaiu-blue-300 size-5" />
                       {category}
-                      <ChevronRight className="size-4 transition-transform duration-500 ease-in-out group-hover:rotate-90" />
+                      <ChevronRight className="size-4 rotate-90 transition-transform duration-500 ease-in-out group-hover:rotate-90 md:rotate-0" />
                     </div>
-                    <div className="grid grid-rows-[0fr] transition-all duration-500 ease-in-out group-hover:grid-rows-[1fr]">
+                    <div className="grid grid-rows-[1fr] transition-all duration-500 ease-in-out group-hover:grid-rows-[1fr] md:grid-rows-[0fr]">
                       {groupedCompanies[category].map((company, index) => (
                         <ul
                           key={index + company.title}
@@ -75,7 +72,7 @@ export default async function Footer({ companies }: FooterProps) {
                         >
                           <li>
                             <Link
-                              className="hover:text-redaiu-blue-300 flex transition-colors duration-500"
+                              className="hover:text-redaiu-blue-300 flex py-2 transition-colors duration-500 md:py-1"
                               key={index + company.title}
                               href={`/empresas/${company.slug}`}
                             >
