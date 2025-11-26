@@ -68,3 +68,22 @@ export function groupCompaniesByCategory(
  */
 export const toList = (text: string) =>
   text ? text.split("\n").filter((line) => line.trim()) : [];
+
+/**
+ * Formata um número para o padrão numérico (ex: separador de milhar).
+ * Padrão usado: Espanhol/Uruguai (pontos para milhar, vírgula para decimal)
+ * Ex: 23000 -> "23.000"
+ */
+export function formatNumber(
+  value: number | string | undefined | null,
+): string {
+  if (value === undefined || value === null) return "";
+
+  const number = Number(value);
+
+  if (isNaN(number)) return String(value);
+
+  return new Intl.NumberFormat("es-UY", {
+    maximumFractionDigits: 2,
+  }).format(number);
+}
