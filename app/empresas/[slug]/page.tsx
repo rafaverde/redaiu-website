@@ -11,6 +11,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { LuLink } from "react-icons/lu";
 import Link from "next/link";
+import { Mail, PhoneCall } from "lucide-react";
 
 export default function CompanyPage() {
   return (
@@ -29,7 +30,7 @@ export default function CompanyPage() {
                   <LuLink size={28} /> www.ingenium.com.uy
                 </div>
               </Link>
-              <Link href={`https://www.linkedin.com`} className="">
+              <Link href={`https://www.linkedin.com`} target="_blank">
                 <FaLinkedin
                   size={50}
                   className="text-redaiu-gray-800 hover:text-redaiu-blue-300"
@@ -110,7 +111,7 @@ export default function CompanyPage() {
             </h2>
           </div>
 
-          <div className="border-redaiu-blue-300 grid grid-cols-1 gap-12 border-b py-9 lg:grid-cols-2">
+          <article className="border-redaiu-blue-300 grid grid-cols-1 gap-12 border-b py-9 lg:grid-cols-2">
             <div className="flex justify-end">
               <Image src={tempBuilding1} alt="" className="rounded-4xl" />
             </div>
@@ -131,9 +132,9 @@ export default function CompanyPage() {
                 <strong>Cliente: </strong> Stadium Ontwikkeling Cambuur
               </p>
             </div>
-          </div>
+          </article>
 
-          <div className="grid grid-cols-1 gap-12 py-9 lg:grid-cols-2">
+          <article className="grid grid-cols-1 gap-12 py-9 lg:grid-cols-2">
             <div className="flex justify-end">
               <Image src={tempBuilding2} alt="" className="rounded-4xl" />
             </div>
@@ -154,6 +155,47 @@ export default function CompanyPage() {
                 <strong>Cliente: </strong> Stadium Ontwikkeling Cambuur
               </p>
             </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="bg-redaiu-gray-800 text-white">
+        <div className="container mx-auto grid grid-cols-1 px-4 py-15 md:grid-cols-3 md:px-1">
+          <div className="border-redaiu-blue-300 flex flex-col justify-center border-b p-6 md:border-r md:border-b-0">
+            <h2 className="text-2xl md:text-4xl">Contacto</h2>
+          </div>
+          <div className="border-redaiu-blue-300 flex flex-col justify-center border-b p-6 md:border-r md:border-b-0">
+            <div className="flex gap-4">
+              <Link href={`linkedIn Contato`} target="_blank">
+                <FaLinkedin size={36} />
+              </Link>
+
+              <div>
+                <p className="font-bold italic">Ing. Facundo del Castillo</p>
+                <p className="italic">Socio Fundador</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-3 p-6">
+            <Link href={`mailto:`} className="flex items-center gap-3">
+              <Mail size={24} />
+              email@email.com.uy
+            </Link>
+
+            <Link href={`mailto:`} className="flex items-center gap-3">
+              <PhoneCall size={24} />
+              +598 29167897
+            </Link>
+
+            <Link href={`mailto:`} className="flex items-center gap-3">
+              <FaWhatsapp size={24} />
+              +598 29167897
+            </Link>
+
+            <Link href={`mailto:`} className="flex items-center gap-3">
+              <FaLinkedin size={24} />
+              ingenium
+            </Link>
           </div>
         </div>
       </section>
