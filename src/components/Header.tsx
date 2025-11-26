@@ -70,10 +70,10 @@ export default function Header({ companies }: HeaderProps) {
   });
 
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className="sticky top-0 z-50 w-full" id="top">
       <div className="bg-redaiu-blue-700 shadow-redaiu-gray-800 w-full shadow-sm">
         <div className="container m-auto flex items-center justify-between gap-8 p-5 md:gap-2 md:px-0">
-          <Link href="/">
+          <Link href={`${isScrolled ? "#top" : "/"}`}>
             <Logo isCompact={isScrolled} />
           </Link>
 

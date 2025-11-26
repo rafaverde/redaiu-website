@@ -27,8 +27,8 @@ export default async function RootLayout({
   console.log(companies);
 
   return (
-    <html lang="es">
-      <body className={`${montserrat.className} antialiased`}>
+    <html lang="es" className="scroll-smooth" data-scroll-behavior="smooth">
+      <body className={`${montserrat.className} scroll-smooth antialiased`}>
         <Header companies={companies} />
         <main>{children}</main>
         <Footer companies={companies} />
