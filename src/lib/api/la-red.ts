@@ -31,7 +31,7 @@ export const GET_LA_RED_DATA = gql`
   }
 `;
 
-export async function GetLaRedData() {
+export async function getLaRedData() {
   const client = getClient();
 
   try {
