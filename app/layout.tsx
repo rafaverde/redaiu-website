@@ -28,6 +28,9 @@ export default async function RootLayout({
   return (
     <html lang="es" className="scroll-smooth" data-scroll-behavior="smooth">
       <body className={`${montserrat.className} scroll-smooth antialiased`}>
+        <h1 className="sr-only">
+          Red AIU - Red de Arquitectura e Ingeniería de Uruguay{" "}
+        </h1>
         <Header companies={companies} />
         <main>{children}</main>
         <Footer companies={companies} />
