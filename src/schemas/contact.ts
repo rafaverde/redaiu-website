@@ -12,3 +12,20 @@ export const contactSchema = z.object({
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;
+
+// Tipo de retorno da ação
+export type State = {
+  status: "success" | "error" | "idle";
+  message: string;
+  errors?: {
+    name?: string[];
+    email?: string[];
+    message?: string[];
+  };
+};
+
+// Estado inicial para o hook useFormState
+export const initialState: State = {
+  status: "idle",
+  message: "",
+};

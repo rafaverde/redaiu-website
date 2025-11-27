@@ -1,3 +1,4 @@
+import ContactForm from "@/src/components/layout/ContactForm";
 import { getGlobalData } from "@/src/lib/api/global";
 import { getLaRedData } from "@/src/lib/api/la-red";
 import { Rocket, Waypoints } from "lucide-react";
@@ -14,7 +15,7 @@ export default async function LaRed() {
 
   if (!pageData) return notFound();
 
-  const { title, content, featuredImage, laredFg } = pageData;
+  const { title, featuredImage, laredFg } = pageData;
 
   return (
     <>
@@ -25,7 +26,7 @@ export default async function LaRed() {
               src={featuredImage.node.sourceUrl}
               alt={featuredImage.node.altText || ""}
               fill
-              className="bg-redaiu-gray-800 absolute inset-0 h-full w-full object-cover"
+              className="bg-redaiu-gray-700 absolute inset-0 h-full w-full object-cover"
             />
           )}
 

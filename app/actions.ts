@@ -1,23 +1,6 @@
 "use server";
 
-import { contactSchema } from "@/src/schemas/contact";
-
-// Tipo de retorno da ação
-export type State = {
-  status: "success" | "error" | "idle";
-  message: string;
-  errors?: {
-    name?: string[];
-    email?: string[];
-    message?: string[];
-  };
-};
-
-// Estado inicial para o hook useFormState
-export const initialState: State = {
-  status: "idle",
-  message: "",
-};
+import { contactSchema, State } from "@/src/schemas/contact";
 
 export async function sendContactEmail(
   prevState: State,
