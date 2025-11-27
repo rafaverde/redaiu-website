@@ -45,67 +45,59 @@ export default async function ContactoPage() {
       </section>
 
       {/* --- CONTEÚDO PRINCIPAL --- */}
-      <div className="relative z-20 container mx-auto -mt-20 px-4 py-15 md:px-0">
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
-          {/* Coluna 1: Formulário (Maior destaque) */}
-          <div className="lg:col-span-7">
-            <ContactForm />
-          </div>
+      <section className="bg-redaiu-blue-700/50 text-redaiu-gray-600">
+        <div className="relative z-20 container mx-auto px-4 py-15 md:px-0">
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
+            {/* Coluna 1: Formulário (Maior destaque) */}
+            <div className="h-full lg:col-span-7">
+              <ContactForm />
+            </div>
 
-          {/* Coluna 2: Dados Institucionais (Sidebar) */}
-          <div className="border-redaiu-blue-500 flex h-full flex-col rounded-xl border-t-4 bg-white p-8 shadow-sm md:p-10 lg:col-span-5">
-            <h2 className="text-redaiu-gray-800 mb-8 text-2xl font-bold tracking-wide uppercase">
-              {contactoFg.institutionalDataTitle}
-            </h2>
+            {/* Coluna 2: Dados Institucionais (Sidebar) */}
+            <div className="border-redaiu-blue-500 flex h-full flex-col rounded-xl border-t-4 bg-white p-8 shadow-sm md:p-10 lg:col-span-5">
+              <h2 className="text-redaiu-gray-800 mb-8 text-2xl font-bold tracking-wide uppercase">
+                {contactoFg.institutionalDataTitle}
+              </h2>
 
-            {/* Dados vindos do ACF da Página */}
-            <div
-              className="prose mb-10 grow text-gray-600"
-              dangerouslySetInnerHTML={{
-                __html: contactoFg.institutionalDataBody,
-              }}
-            />
+              {/* Dados vindos do ACF da Página */}
+              <div
+                className="prose text-redaiu-gray-600 mb-10 grow leading-relaxed [&_span]:mt-6 [&_span]:block"
+                dangerouslySetInnerHTML={{
+                  __html: contactoFg.institutionalDataBody,
+                }}
+              />
 
-            {/* Dados vindos do Global (Backup/Reforço) */}
-            <div className="space-y-6 border-t border-gray-100 pt-8">
-              {globalData?.footerContactEmail && (
-                <a
-                  href={`mailto:${globalData.footerContactEmail}`}
-                  className="group flex items-start gap-4"
-                >
-                  <div className="text-redaiu-blue-600 group-hover:bg-redaiu-blue-600 rounded-lg bg-blue-50 p-3 transition-colors group-hover:text-white">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold tracking-wider text-gray-400 uppercase">
-                      Email
-                    </p>
-                    <p className="group-hover:text-redaiu-blue-600 text-lg font-medium text-gray-800 transition-colors">
+              {/* Dados vindos do Global (Backup/Reforço) */}
+              <div className="space-y-6 border-t border-gray-100 pt-8">
+                {globalData?.footerContactEmail && (
+                  <a
+                    href={`mailto:${globalData.footerContactEmail}`}
+                    className="group flex items-center gap-2"
+                  >
+                    <Mail className="text-redaiu-blue-300 size-6" />
+
+                    <p className="group-hover:text-redaiu-blue-300 text-lg font-medium text-gray-800 transition-colors duration-500 ease-in-out">
                       {globalData.footerContactEmail}
                     </p>
-                  </div>
-                </a>
-              )}
+                  </a>
+                )}
+                {globalData?.footerContactPhone && (
+                  <a
+                    href={`tel:${globalData.footerContactPhone}`}
+                    className="group flex items-center gap-2"
+                  >
+                    <Phone className="text-redaiu-blue-300 size-6" />
 
-              {globalData?.footerContactPhone && (
-                <div className="flex items-start gap-4">
-                  <div className="text-redaiu-blue-600 rounded-lg bg-blue-50 p-3">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold tracking-wider text-gray-400 uppercase">
-                      Teléfono
-                    </p>
-                    <p className="text-lg font-medium text-gray-800">
+                    <p className="group-hover:text-redaiu-blue-300 text-lg font-medium text-gray-800 transition-colors duration-500 ease-in-out">
                       {globalData.footerContactPhone}
                     </p>
-                  </div>
-                </div>
-              )}
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

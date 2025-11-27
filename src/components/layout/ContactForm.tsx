@@ -59,7 +59,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="rounded-xl border border-gray-100 bg-white p-8 shadow-sm">
+    <div className="border-redaiu-blue-500 h-full rounded-xl border border-t-4 bg-white p-8 shadow-sm">
       <h3 className="text-redaiu-blue-700 mb-6 text-2xl font-bold tracking-wide uppercase">
         Envíanos un mensaje
       </h3>
