@@ -6,8 +6,8 @@ interface LogoProps {
 export default function Logo({ isCompact = false, className = "" }: LogoProps) {
   return (
     <div className="flex flex-col justify-center">
-      <h2 className="text-3xl font-extralight">
-        RED <span className="font-medium">AIU</span>
+      <h2 className="text-3xl font-extralight uppercase">
+        Red <span className="font-medium">AIU</span>
       </h2>
 
       <div
