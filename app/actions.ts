@@ -30,7 +30,7 @@ export async function sendContactEmail(
 
   try {
     const data = await resend.emails.send({
-      from: "Contacto Red AIU Web <noreply@redaui.com.uy>",
+      from: "Contacto Red AIU Web <noreply@redaiu.com.uy>",
       to: [process.env.CONTACT_EMAIL_TO as string],
       replyTo: email,
       subject: `Nuevo contacto web: ${name}`,
