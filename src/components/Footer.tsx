@@ -28,7 +28,7 @@ export default async function Footer({ companies }: FooterProps) {
         cards={globalData.whyUruguayCards?.nodes}
       />
 
-      <footer className="bg-redaiu-gray-800">
+      <footer className="bg-redaiu-gray-800 text-white">
         <div className="container mx-auto px-4 md:p-0">
           <div className="border-redaiu-gray-500 grid grid-cols-1 gap-8 border-b py-16 md:grid-cols-3 md:gap-15">
             <div className="flex flex-col gap-2">
