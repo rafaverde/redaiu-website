@@ -12,7 +12,7 @@ import { formatNumber, toList } from "@/src/lib/utils";
 
 export async function generateStaticParams() {
   const companies = await getAllCompaniesSlug();
-  return companies?.map((company) => ({ slug: company.slug }));
+  return (companies || []).map((company) => ({ slug: company.slug }));
 }
 
 export const revalidate = 60;
