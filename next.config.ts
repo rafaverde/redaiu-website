@@ -6,12 +6,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "redaiu",
-        port: "8890",
+        hostname: "app.redaiu.com.uy",
+        port: "",
         pathname: "/wp-content/uploads/**",
       },
       {
-        protocol: "http",
+        protocol: "https",
         hostname: "redaiu",
         port: "8890",
         pathname: "/wp-content/uploads/**",
