@@ -35,7 +35,7 @@ export default function WhyUruguay({ title, cards }: WhyUruguayProps) {
             return (
               <div
                 key={index + card.title}
-                className={`p-8 ${index === 0 && "bg-redaiu-gray-800"} ${index === 3 && "bg-redaiu-gray-800"} ${index === 1 && "bg-redaiu-gray-600"} ${index === 2 && "bg-redaiu-gray-500"} space-y-2 first:rounded-l-4xl last:rounded-r-4xl nth-[2]:rounded-r-4xl nth-[3]:rounded-l-4xl md:nth-[2]:rounded-none md:nth-[3]:rounded-none`}
+                className={`p-8 ${index === 0 && "bg-redaiu-gray-800"} ${index === 3 && "bg-redaiu-gray-800"} ${index === 1 && "bg-redaiu-gray-600"} ${index === 2 && "bg-redaiu-gray-500"} space-y-2 text-white first:rounded-l-4xl last:rounded-r-4xl nth-[2]:rounded-r-4xl nth-[3]:rounded-l-4xl md:nth-[2]:rounded-none md:nth-[3]:rounded-none`}
               >
                 <div className="mb-4">
                   <IconComponent className="size-8" />
