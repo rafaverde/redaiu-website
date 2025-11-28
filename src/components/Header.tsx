@@ -71,7 +71,7 @@ export default function Header({ companies }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full" id="top">
-      <div className="bg-redaiu-blue-700 shadow-redaiu-gray-800 w-full shadow-sm">
+      <div className="bg-redaiu-blue-700 shadow-redaiu-gray-800 w-full text-white shadow-sm">
         <div className="container m-auto flex items-center justify-between gap-8 p-5 md:gap-2 md:px-0">
           <Link href={`${isScrolled ? "#top" : "/"}`}>
             <Logo isCompact={isScrolled} />
@@ -93,7 +93,7 @@ export default function Header({ companies }: HeaderProps) {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="data-[state=open]:text-redaiu-blue-300 hover:text-redaiu-blue-300 hover:border-redaiu-blue-300! focus:text-redaiu-blue-300 cursor-pointer rounded-none border-b-2 border-transparent bg-transparent!">
+                  <NavigationMenuTrigger className="data-[state=open]:text-redaiu-blue-300 hover:text-redaiu-blue-300 hover:border-redaiu-blue-300! focus:text-redaiu-blue-300 cursor-pointer rounded-none border-b-2 border-transparent bg-transparent! text-white">
                     Empresas
                   </NavigationMenuTrigger>
 
