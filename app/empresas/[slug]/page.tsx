@@ -93,7 +93,7 @@ export default async function CompanyPage({
         </div>
       </section>
 
-      <section className="from-redaiu-gray-800 to-redaiu-gray-500 bg-linear-to-r from-50% to-50%">
+      <section className="from-redaiu-gray-800 to-redaiu-gray-500 bg-linear-to-r from-50% to-50% text-white">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3">
           <div className="bg-redaiu-gray-800 space-y-4 px-8 py-15">
             <h2 className="text-xl font-bold uppercase md:text-2xl">
