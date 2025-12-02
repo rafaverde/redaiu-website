@@ -20,10 +20,22 @@ export const GET_LA_RED_DATA = gql`
       laredFg {
         misionTitle
         misionBody
+
         propositoTitle
         propositoBody
+
         objetivosTitle
         objetivosBody
+        objetivo1Descripcion
+        objetivo1Icon
+        objetivo1Titulo
+        objetivo2Descripcion
+        objetivo2Icon
+        objetivo2Titulo
+        objetivo3Descripcion
+        objetivo3Icon
+        objetivo3Titulo
+
         apoyosTitle
         apoyosBody
       }
