@@ -1,6 +1,7 @@
 import CompanyGrid from "@/src/components/home/CompanyGrid";
 import Hero from "@/src/components/home/Hero";
 import WhyRedAiu from "@/src/components/home/WhyRedAiu";
+import SectionSeparator from "@/src/components/layout/SectionSeparator";
 import { getHomeData } from "@/src/lib/api/home";
 import { shuffleArray } from "@/src/lib/utils";
 import { LoaderCircle } from "lucide-react";
@@ -34,6 +35,8 @@ export default async function Home() {
         body={pageData?.whyAiuBody}
         areas={pageData?.whyAiuAreas}
       />
+
+      <SectionSeparator />
 
       <CompanyGrid
         companies={shuffledCompanies}

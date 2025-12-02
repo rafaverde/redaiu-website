@@ -28,14 +28,14 @@ export default function WhyUruguay({ title, cards }: WhyUruguayProps) {
           dangerouslySetInnerHTML={{ __html: title || "" }}
         ></div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-4">
           {cards.map((card, index) => {
             const IconComponent =
               iconMap[card.diferenciaisFg.iconName[0]] || LuGlobe;
             return (
               <div
                 key={index + card.title}
-                className={`p-8 ${index === 0 && "bg-redaiu-gray-800"} ${index === 3 && "bg-redaiu-gray-800"} ${index === 1 && "bg-redaiu-gray-600"} ${index === 2 && "bg-redaiu-gray-500"} space-y-2 text-white first:rounded-l-4xl last:rounded-r-4xl nth-[2]:rounded-r-4xl nth-[3]:rounded-l-4xl md:nth-[2]:rounded-none md:nth-[3]:rounded-none`}
+                className={`p-8 ${index === 0 && "bg-redaiu-gray-800"} ${index === 3 && "bg-redaiu-gray-800"} ${index === 1 && "bg-redaiu-gray-600"} ${index === 2 && "bg-redaiu-gray-500"} space-y-2 text-white first:rounded-l-4xl first:rounded-tr-4xl last:rounded-l-4xl last:rounded-br-4xl nth-[2]:rounded-tl-4xl nth-[2]:rounded-br-4xl nth-[3]:rounded-tr-4xl nth-[3]:rounded-bl-4xl md:first:rounded-r-none md:last:rounded-l-none md:last:rounded-r-4xl md:nth-[2]:rounded-none md:nth-[3]:rounded-none`}
               >
                 <div className="mb-4">
                   <IconComponent className="size-8" />
