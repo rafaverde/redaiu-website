@@ -66,12 +66,9 @@ export default async function Footer({ companies }: FooterProps) {
                         <ChevronRight className="size-4 rotate-90 transition-transform duration-500 ease-in-out group-hover:rotate-90 md:rotate-0" />
                       </div>
                       <div className="grid grid-rows-[1fr] transition-all duration-500 ease-in-out group-hover:grid-rows-[1fr] md:grid-rows-[0fr]">
-                        {groupedCompanies[category].map((company, index) => (
-                          <ul
-                            key={index + company.title}
-                            className="overflow-hidden pl-12"
-                          >
-                            <li>
+                        <ul className="overflow-hidden pl-12">
+                          {groupedCompanies[category].map((company, index) => (
+                            <li key={index + company.title}>
                               <Link
                                 className="hover:text-redaiu-blue-300 flex py-2 transition-colors duration-500 md:py-1"
                                 key={index + company.title}
@@ -81,8 +78,8 @@ export default async function Footer({ companies }: FooterProps) {
                                 {company.title}
                               </Link>
                             </li>
-                          </ul>
-                        ))}
+                          ))}
+                        </ul>
                       </div>
                     </li>
                   </ul>
