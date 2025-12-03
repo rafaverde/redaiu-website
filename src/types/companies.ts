@@ -7,6 +7,7 @@ export interface RelatedProject {
     year: number;
     country: string;
     measurementValue: number;
+    unitOfMeasurement: string;
     client: string;
     scope: string;
   };

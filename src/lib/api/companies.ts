@@ -49,6 +49,7 @@ const GET_COMPANY_BY_SLUG = gql`
                 year
                 country
                 measurementValue
+                unitOfMeasurement
                 client
                 scope
               }

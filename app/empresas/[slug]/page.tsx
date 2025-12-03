@@ -164,8 +164,8 @@ export default async function CompanyPage({
                   <div>
                     {project.proyectosFg.measurementValue && (
                       <span className="border-redaiu-gray-800 border-r px-2 first:pl-0 last:border-0">
-                        {formatNumber(project.proyectosFg.measurementValue)}m
-                        <sup>2</sup>
+                        {formatNumber(project.proyectosFg.measurementValue)}
+                        {project.proyectosFg.unitOfMeasurement}
                       </span>
                     )}
                     {project.proyectosFg.year && (
