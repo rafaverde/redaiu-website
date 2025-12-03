@@ -27,6 +27,10 @@ const GET_COMPANY_BY_SLUG = gql`
           node {
             sourceUrl
             altText
+            mediaDetails {
+              width
+              height
+            }
           }
         }
         websiteUrl

@@ -42,8 +42,9 @@ export default async function CompanyPage({
               <Image
                 src={empresasFg?.logo?.node?.sourceUrl}
                 alt={empresasFg?.logo?.node?.altText}
-                width={300}
-                height={0}
+                width={empresasFg?.logo?.node?.mediaDetails?.width}
+                height={empresasFg?.logo?.node?.mediaDetails?.height}
+                className="max-h-16 w-auto object-contain"
               />
             </div>
 
