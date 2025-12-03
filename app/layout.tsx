@@ -5,6 +5,8 @@ import Header from "@/src/components/Header";
 import Footer from "@/src/components/Footer";
 import { getMenuCompanies } from "@/src/lib/api/menu";
 
+export const revalidate = 60;
+
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
