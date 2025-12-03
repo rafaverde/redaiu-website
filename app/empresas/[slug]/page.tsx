@@ -162,9 +162,9 @@ export default async function CompanyPage({
                     {project.title}
                   </h3>
                   <div>
-                    {project.proyectosFg.squareMeters && (
+                    {project.proyectosFg.measurementValue && (
                       <span className="border-redaiu-gray-800 border-r px-2 first:pl-0 last:border-0">
-                        {formatNumber(project.proyectosFg.squareMeters)}m
+                        {formatNumber(project.proyectosFg.measurementValue)}m
                         <sup>2</sup>
                       </span>
                     )}

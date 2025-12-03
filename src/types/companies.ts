@@ -6,7 +6,7 @@ export interface RelatedProject {
   proyectosFg: {
     year: number;
     country: string;
-    squareMeters: number;
+    measurementValue: number;
     client: string;
     scope: string;
   };

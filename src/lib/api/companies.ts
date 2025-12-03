@@ -48,7 +48,7 @@ const GET_COMPANY_BY_SLUG = gql`
               proyectosFg {
                 year
                 country
-                squareMeters
+                measurementValue
                 client
                 scope
               }
