@@ -78,7 +78,7 @@ export default async function CompanyPage({
             />
             <div>
               <Link
-                href={`https://wa.me/${empresasFg.whatsappPhone}`}
+                href={`https://wa.me/${empresasFg?.whatsappPhone}`}
                 target="_blank"
               >
                 <Button
@@ -100,7 +100,7 @@ export default async function CompanyPage({
               Areas de expertise
             </h2>
             <ul className="leading-relaxed">
-              {toList(empresasFg.areasExpertise).map((item, index) => (
+              {toList(empresasFg?.areasExpertise).map((item, index) => (
                 <li key={index} className="flex items-center">
                   <ChevronRight className="size-4" /> {item}
                 </li>
@@ -112,7 +112,7 @@ export default async function CompanyPage({
               Servicios
             </h2>
             <ul className="leading-relaxed">
-              {toList(empresasFg.services).map((item, index) => (
+              {toList(empresasFg?.services).map((item, index) => (
                 <li key={index} className="flex items-center">
                   <ChevronRight className="size-4" /> {item}
                 </li>
@@ -124,7 +124,7 @@ export default async function CompanyPage({
               Mercados en los que ha trabajado
             </h2>
             <ul className="leading-relaxed">
-              {toList(empresasFg.markets).map((item, index) => (
+              {toList(empresasFg?.markets).map((item, index) => (
                 <li key={index} className="flex items-center">
                   <ChevronRight className="size-4" /> {item}
                 </li>
@@ -142,7 +142,7 @@ export default async function CompanyPage({
             </h2>
           </div>
 
-          {empresasFg.proyectosRelacionados.nodes.map((project, index) => (
+          {empresasFg?.proyectosRelacionados?.nodes.map((project, index) => (
             <article
               key={index + project.title}
               className="border-redaiu-blue-300 grid grid-cols-1 gap-12 border-b py-9 lg:grid-cols-2"
