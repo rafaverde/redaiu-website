@@ -24,7 +24,12 @@ export async function getMenuCompanies() {
   try {
     const { data } = await client.query<CompanyMenuResponse>({
       query: GET_MENU_COMPANIES,
-      fetchPolicy: "no-cache",
+      fetchPolicy: "network-only",
+      context: {
+        fetchOption: {
+          next: { revalidate: 60 },
+        },
+      },
     });
 
     return data?.empresas.nodes || [];
