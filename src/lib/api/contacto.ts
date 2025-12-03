@@ -34,9 +34,9 @@ export async function getContactoData() {
       fetchPolicy: "no-cache",
     });
 
-    return data?.page;
+    return data?.page || null;
   } catch (err) {
     console.log("Erro ao buscar dados da página Contacto: ", err);
-    return null;
+    throw new Error("Falha ao conectar com o WordPress");
   }
 }

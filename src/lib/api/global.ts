@@ -56,9 +56,9 @@ export async function getGlobalData() {
       fetchPolicy: "no-cache",
     });
 
-    return data?.page?.globalFg;
+    return data?.page?.globalFg || null;
   } catch (err) {
     console.error("Erro ao buscar dados globais: ", err);
-    return null;
+    throw new Error("Falha ao conectar com o WordPress");
   }
 }

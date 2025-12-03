@@ -52,9 +52,9 @@ export async function getLaRedData() {
       fetchPolicy: "no-cache",
     });
 
-    return data?.page;
+    return data?.page || null;
   } catch (err) {
     console.error("Erro ao buscar dados da página La Red: ", err);
-    return null;
+    throw new Error("Falha ao conectar com o WordPress");
   }
 }

@@ -35,6 +35,6 @@ export async function getMenuCompanies() {
     return data?.empresas.nodes || [];
   } catch (err) {
     console.error("Erro ao buscar empresas do menu:", err);
-    return [];
+    throw new Error("Falha ao conectar com o WordPress");
   }
 }

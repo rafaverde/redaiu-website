@@ -108,6 +108,6 @@ export async function getHomeData() {
     };
   } catch (err) {
     console.error("Erro ao buscar dados da Home: ", err);
-    return null;
+    throw new Error("Falha ao conectar com o WordPress");
   }
 }

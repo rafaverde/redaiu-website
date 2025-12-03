@@ -95,10 +95,10 @@ export async function getCompanyBySlug(slug: string) {
       fetchPolicy: "no-cache",
     });
 
-    return data?.empresa;
+    return data?.empresa || null;
   } catch (err) {
-    console.error(`Erro ao buscar empresa ${slug}: `, err);
-    return null;
+    console.error(`Erro crítico ao buscar empresa ${slug}: `, err);
+    throw new Error("Falha ao conectar com o WordPress");
   }
 }
 
@@ -111,9 +111,9 @@ export async function getAllCompaniesSlug() {
       fetchPolicy: "no-cache",
     });
 
-    return data?.empresas.nodes;
+    return data?.empresas.nodes || null;
   } catch (err) {
     console.error(`Erro ao buscar slugs das empresas`, err);
-    return [];
+    throw new Error("Falha ao conectar com o WordPress");
   }
 }
