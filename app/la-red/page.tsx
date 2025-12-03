@@ -127,8 +127,8 @@ export default async function LaRed() {
                   key={index}
                   className="bg-redaiu-blue-300/20 space-y-4 rounded-tr-4xl rounded-bl-4xl border-l-4 p-6"
                 >
-                  <IconComponent size={36} />
-                  <div className="space-y-2">
+                  <IconComponent size={36} className="text-redaiu-blue-200" />
+                  <div className="space-y-2 text-white">
                     <h4 className="text-2xl font-bold">{objetivo.title}</h4>
                     <p className="leading-relaxed">{objetivo.description}</p>
                   </div>
