@@ -83,7 +83,7 @@ export default function Hero({ title, subtitle, images }: HeroProps) {
               size="lg"
               className="bg-redaiu-blue-300 hover:bg-redaiu-blue-500 px-8 py-6 text-lg font-semibold text-white transition-colors duration-300 ease-in-out"
             >
-              <Link href="/contacto">Contactarme →</Link>
+              <Link href="/contacto">Contactar →</Link>
             </Button>
           </div>
         </div>
