@@ -9,7 +9,7 @@ export const getClient = () => {
 
   if (!apiUrl) {
     throw new Error(
-      "❌ Erro Fatal: A variável NEXT_PUBLIC_WORDPRESS_API_URL não está definida"
+      "❌ Erro Fatal: A variável NEXT_PUBLIC_WORDPRESS_API_URL não está definida",
     );
   }
 
@@ -21,6 +21,9 @@ export const getClient = () => {
     client = new ApolloClient({
       link: new HttpLink({
         uri: apiUrl,
+        fetchOptions: {
+          next: { revalidate: 60 },
+        },
       }),
       cache: new InMemoryCache(),
     });
