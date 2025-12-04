@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
+
+import { getMenuCompanies } from "@/src/lib/api/menu";
+
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+
 import Header from "@/src/components/Header";
 import Footer from "@/src/components/Footer";
-import { getMenuCompanies } from "@/src/lib/api/menu";
 
 export const revalidate = 60;
 
@@ -79,6 +83,10 @@ export default async function RootLayout({
         <Header companies={companies} />
         <main>{children}</main>
         <Footer companies={companies} />
+
+        <GoogleTagManager
+          gtmId={process.env.NEXT_PUBLIC_GTM_ID || "error-loading-tag"}
+        />
       </body>
     </html>
   );
