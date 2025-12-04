@@ -137,11 +137,13 @@ export default async function Footer({ companies }: FooterProps) {
                       <Image
                         src={item.apoiadoresFg.logotipo.node.sourceUrl}
                         alt={item.apoiadoresFg.logotipo.node.altText}
-                        width={150}
-                        height={
-                          item.apoiadoresFg.logotipo.node.mediaDetails
-                            ?.height || 0
+                        width={
+                          item.apoiadoresFg.logotipo.node.mediaDetails?.width
                         }
+                        height={
+                          item.apoiadoresFg.logotipo.node.mediaDetails?.height
+                        }
+                        className="h-auto max-w-[150px]"
                       />
                     </Link>
                   )}

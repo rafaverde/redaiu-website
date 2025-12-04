@@ -19,7 +19,7 @@ export default function CompanyGrid({ title, companies }: CompanyGridProps) {
           {companies?.map((company, index) => (
             <div
               key={index + company.slug}
-              className="flex w-1/2 items-center justify-center md:w-1/4"
+              className="flex w-full items-center justify-center md:w-1/4"
             >
               <Link
                 href={`/empresas/${company.slug}`}
@@ -28,9 +28,13 @@ export default function CompanyGrid({ title, companies }: CompanyGridProps) {
                 <Image
                   src={company.empresasFg.logoNegativo.node.sourceUrl}
                   alt={company.empresasFg.logoNegativo.node.altText}
-                  width={300}
-                  height={0}
-                  className="transition-opacity duration-500 ease-in-out group-hover:opacity-70"
+                  width={
+                    company.empresasFg.logoNegativo.node.mediaDetails?.width
+                  }
+                  height={
+                    company.empresasFg.logoNegativo.node.mediaDetails?.height
+                  }
+                  className="h-auto max-w-[300px] transition-opacity duration-500 ease-in-out group-hover:opacity-70"
                 />
               </Link>
             </div>
