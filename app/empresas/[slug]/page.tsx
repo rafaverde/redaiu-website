@@ -9,6 +9,24 @@ import { ChevronRight, Mail, PhoneCall } from "lucide-react";
 import { getAllCompaniesSlug, getCompanyBySlug } from "@/src/lib/api/companies";
 import { notFound } from "next/navigation";
 import { formatNumber, toList } from "@/src/lib/utils";
+import { CompanyData } from "@/src/types/companies";
+import { generateCompanyMetadata } from "@/src/lib/metadata";
+import { Metadata } from "next";
+
+interface MetadataProps {
+  params: {
+    slug: string;
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
+  const { slug } = await params;
+  const company: CompanyData | null = await getCompanyBySlug(slug);
+
+  return generateCompanyMetadata(company);
+}
 
 export async function generateStaticParams() {
   const companies = await getAllCompaniesSlug();
