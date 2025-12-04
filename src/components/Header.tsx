@@ -163,7 +163,7 @@ export default function Header({ companies }: HeaderProps) {
 
               <SheetContent
                 side="top"
-                className="bg-redaiu-blue-700/90 h-full w-full text-white"
+                className="bg-redaiu-blue-700/90 h-full w-full overflow-scroll text-white"
               >
                 <SheetTitle className="sr-only">Menu</SheetTitle>
                 <SheetDescription className="sr-only">

@@ -49,7 +49,7 @@ export default function Hero({ title, subtitle, images }: HeroProps) {
   return (
     <section
       id="Hero"
-      className="bg-redaiu-gray-800 relative h-[600px] w-full overflow-hidden md:h-[700px]"
+      className="bg-redaiu-gray-800 relative min-h-[600px] w-full overflow-hidden md:h-[700px]"
     >
       <div className="absolute inset-0 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2">
         {shuffledImages.slice(0, 6).map((img, index) => (
@@ -65,7 +65,7 @@ export default function Hero({ title, subtitle, images }: HeroProps) {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto flex h-full flex-col items-start justify-center px-4 md:px-0">
+      <div className="relative z-10 container mx-auto flex h-full flex-col items-start justify-center px-4 py-20 md:px-0">
         <div className="max-w-3xl space-y-4">
           <div className="bg-redaiu-gray-800/85 rounded-4xl p-9">
             <div
