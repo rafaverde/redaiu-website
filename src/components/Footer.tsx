@@ -6,6 +6,7 @@ import Image from "next/image";
 import { CompanyMenuItem } from "../types/menu";
 import { groupCompaniesByCategory } from "../lib/utils";
 import WhyUruguay from "./home/WhyUruguay";
+import MacondoSignature from "./layout/macondo-signature";
 
 interface FooterProps {
   companies: CompanyMenuItem[];
@@ -152,6 +153,7 @@ export default async function Footer({ companies }: FooterProps) {
             </div>
           </div>
         </div>
+        <MacondoSignature />
       </footer>
     </>
   );

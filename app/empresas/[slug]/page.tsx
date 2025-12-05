@@ -62,7 +62,7 @@ export default async function CompanyPage({
                 alt={empresasFg?.logo?.node?.altText}
                 width={empresasFg?.logo?.node?.mediaDetails?.width}
                 height={empresasFg?.logo?.node?.mediaDetails?.height}
-                className="max-h-16 w-auto object-contain"
+                className="max-h-16 w-auto max-w-75"
               />
             </div>
 
